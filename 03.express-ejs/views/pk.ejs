@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #title {
+            width: 100%;
+            height: 90px;
+            background-color: rgba(255,255,255,0.8);
+            position: fixed;
+            z-index: 10;
+        }
+        #b{
+            width: 1200px;
+            height:90px;
+            margin: auto;
+        }
+
+        #title_img {
+            width:95px;
+            height: 65px;
+            float: left;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        #title_div {
+            width: 450px;
+            height: 90px;
+            display: inline-block;
+            line-height: 90px;
+            margin-left: 50px;
+        }
+        #title_div a{
+            text-align: center;
+            display: inline-block;
+            width: 85px;
+            height: 90px;
+            margin-right: -6px;
+            text-decoration: none;
+            font-weight: 800;
+            color: black;
+            transition: 0.6s;
+        }
+        #title_div a:hover{
+            background-color: #FBFBFB;
+        }
+        #title_div1 {
+            width: 200px;
+            float: right;
+            margin-right: 100px;
+            height: 50px;
+            margin-top: 25px;
+        }
+        #title_img2 {
+            background: url("images/2.jpg") no-repeat center center;
+            background-size: 35px,35px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid #C0DDC0;
+            display: inline-block;
+            line-height: 15px;
+            cursor: pointer;
+        }
+        #title_img2:hover{
+            background: url("img/2.jpg") no-repeat center center;
+            background-size: 32px,32px;
+            width: 40px;
+            background-color: white;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-block;
+            line-height: 15px;
+        }
+
+        #dl {
+            width: 130px;
+            height: 40px;
+            float: right;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid #C0DDC0;
+            border-radius: 20px;
+            color: #C0DDC0;
+            font-weight: 100;
+            cursor: pointer;
+        }
+        #dl:hover{
+            background-color: #4AA140;
+            color: white;
+            transition: 1s;
+        }
+
+        /*下面主题部分*/
+        #box {
+            position: absolute;
+            width: 100%;
+            background-color: #F5F5F5;
+            margin-top: 90px;
+        }
+
+        /*包住5个图片的div*/
+        #box_img {
+            width: 960px;
+            height: 480px;
+            margin:50px auto;
+        }
+
+        /*包住第一个图的div*/
+        #img1 {
+            width: 480px;
+            height: 480px;
+            float: left;
+            overflow: hidden;
+            position: relative;
+        }
+        #img1_img{
+            transition: 0.8s;
+        }
+
+        /*黑色透明条*/
+        #meng {
+            width: 480px;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            color: white;
+            margin-top: -85px;
+            text-align: center;
+            line-height: 80px;
+            font-weight: 900;
+            font-size: 18px;
+            display: none;
+        }
+
+        /*包住4个图片的div*/
+        #bao {
+            width: 480px;
+            height: 480px;
+            float:right;
+            overflow: hidden;
+        }
+        .img2 {
+            width: 240px;
+            height: 240px;
+            float: left;
+            overflow: hidden;
+            position: relative;
+        }
+        .img2_img{
+            transition: 1s;
+        }
+        .img2 div{
+            width: 240px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            color: white;
+            margin-top: -55px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 900;
+            font-size: 18px;
+            display: none;
+        }
+        .img2:hover div{
+            display: block;
+        }
+
+        /*阅读那块*/
+        #square {
+            width: 960px;
+            height: 80px;
+            margin: auto;
+            line-height: 80px;
+        }
+        #f {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 30px;
+        }
+
+        #text {
+            width: 960px;
+            height: 200px;
+            border: 1px solid gainsboro;
+            margin: auto;
+            background-color: white;
+        }
+
+        #left_text {
+            width: 660px;
+            height: 200px;
+            float: left;
+        }
+
+        #left_img {
+            width: 300px;
+            height: 200px;
+        }
+        #left_text h2{
+            width: 120px;
+            height: 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #left_text h2:hover{
+            color: #4AA140;
+        }
+        #left_text sub{
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #left_text sub:hover{
+            color: #4AA140;
+        }
+        .heng {
+            width: 40px;
+            height: 1px;
+            border-top: 1px solid black;
+            margin-left: 10px;
+            margin-top: 15px;
+        }
+        #left_text h5{
+            height: 1px;
+            font-size: 10px;
+            margin-left: 10px;
+        }
+        #left_text a{
+            margin-left: 350px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #4AA140;
+        }
+        #text1 {
+            width: 960px;
+            height: 200px;
+            border: 1px solid gainsboro;
+            margin: 15px auto;
+            background-color: white;
+        }
+        #left_text1 {
+            width: 660px;
+            height: 200px;
+            float: left;
+        }
+        #left_img1 {
+            width: 300px;
+            height: 200px;
+        }
+        #left_text1 h2{
+            width: 160px;
+            height: 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #left_text1 h2:hover{
+            color: #4AA140;
+        }
+        #left_text1 sub{
+            height: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #left_text1 sub:hover{
+            color: #4AA140;
+        }
+        #left_text1 h5{
+            height: 1px;
+            margin-left: 10px;
+            font-size: 10px;
+        }
+        #left_text1 a{
+            margin-top: -19px;
+            margin-left: 350px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #4AA140;
+        }
+        #text2 {
+            width: 960px;
+            height: 200px;
+            border: 1px solid gainsboro;
+            margin: 15px auto;
+            background-color: white;
+        }
+        #left_text2 {
+            width: 660px;
+            height: 200px;
+            float: left;
+        }
+        #left_img2 {
+            width: 300px;
+            height: 200px;
+        }
+        #left_text2 h2{
+            width: 300px;
+            height: 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #left_text2 h2:hover{
+            color: #4AA140;
+        }
+        #left_text2 sub{
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #left_text2 sub:hover{
+            color: #4AA140;
+        }
+        #left_text2 h5{
+            height: 1px;
+            margin-left: 10px;
+            font-size: 10px;
+        }
+        #left_text2 a{
+            margin-top: -19px;
+            margin-left: 350px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #4AA140;
+        }
+        #left_text2 span{
+
+            margin-top: 35px;
+            margin-left: 10px;
+            font-size: 10px;
+        }
+        #left_text1 span{
+            margin-top: 35px;
+            margin-left: 10px;
+            font-size: 10px;
+        }
+        #left_text span{
+            margin-top: 35px;
+            margin-left: 10px;
+            font-size: 10px;
+        }
+
+        #ting {
+            width: 960px;
+            height: 80px;
+            margin: auto;
+            line-height: 80px;
+        }
+        #f1 {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 30px;
+        }
+
+        #ting_content {
+            width: 962px;
+            height:420px;
+            margin: auto;
+        }
+
+        .ting_content1 {
+            width: 302px;
+            height: 420px;
+            border: 2px solid gainsboro;
+            display: inline-block;
+            /*vertical-align: middle;*/
+        }
+        #ting_content>div:nth-child(2){
+            margin-left: 16px;
+        }
+        #ting_content>div:nth-child(3){
+            margin-left: 16px;
+        }
+
+        .ting_content1_img{
+            width: 302px;
+            height: 302px;
+        }
+
+        .ting_content1_text{
+            width: 302px;
+            height: 120px;
+        }
+        .ting_content1_text>p:nth-child(1){
+            font-size: 20px;
+            height: 10px;
+            margin-left: 15px;
+        }
+        .ting_content1_text>p:nth-child(2){
+            font-size: 10px;
+            height: 20px;
+            margin-left: 15px;
+        }
+        .ting_content1_text>p:nth-child(3){
+            font-size: 10px;
+            height: 10px;
+            margin-left: 15px;
+        }
+
+        #jie {
+            width: 960px;
+            margin: 45px auto;
+        }
+
+        #more_xian {
+            width: 190px;
+            height: 60px;
+            border: 1px solid green;
+            margin: auto;
+            border-radius: 20px;
+        }
+
+        #more {
+            width: 185px;
+            height: 55px;
+            background-color: #83BC80;
+            color: white;
+            border-radius: 20px;
+            margin: 2.5px auto;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #more:hover{
+            background-color: #4AA140;
+        }
+
+        #w {
+            margin-top: 20px;
+        }
+    </style>
+
+    <script src="../javascripts/jquery-3.1.0.min.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <!--标题栏-->
+        <div id="title">
+            <div id="b">
+                <!--片刻图片-->
+                <img id="title_img" src="images/1.png" height="69" width="102"/>
+                <div id="title_div">
+                    <a href="#">首页</a>
+                    <a href="#">阅读</a>
+                    <a href="#">电台</a>
+                    <a href="#">碎片</a>
+                    <a href="#">客户端</a>
+                </div>
+                <div id="title_div1">
+                    <div id="title_img2"></div>
+                    <div id="dl">登录/注册</div>
+                </div>
+            </div>
+        </div>
+        <!--下面主题部分-->
+        <div id="box">
+            <!--hover图片部分-->
+            <div id="box_img">
+                <!--第一个大的-->
+                <div id="img1">
+                    <img id="img1_img" src="images/4.jpg" width="480" height="480"/>
+                    <div id="meng">这样做锻炼,你才会掌握说话...</div>
+                </div>
+
+                <!--包住4张图片-->
+                <div id="bao">
+                    <!--第一张-->
+                    <div class="img2">
+                        <img class="img2_img" src="images/5.jpg" width="240" height="240"/>
+                        <div>这样做锻炼,你才会掌握说话...</div>
+                    </div>
+                    <div class="img2">
+                        <img class="img2_img" src="images/6.jpg"  width="240" height="240"/>
+                        <div>这样做锻炼,你才会掌握说话...</div>
+                    </div>
+
+                    <div class="img2">
+                        <img class="img2_img" src="images/7.jpg" width="240" height="240"/>
+                        <div>这样做锻炼,你才会掌握说话...</div>
+                    </div>
+                    <div class="img2">
+                        <img class="img2_img" src="images/8.jpg" width="240" height="240"/>
+                        <div>这样做锻炼,你才会掌握说话...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--阅读那块-->
+            <div id="square">
+                <div id="f"></div>
+                <span>阅读</span>
+                <span>|</span>
+                <span>Read</span>
+            </div>
+
+            <!--1-->
+            <div id="text">
+                <div id="left_text">
+                    <h2>飞鸿踏雪泥</h2>
+                    <sub>By / 失足少年七千</sub>
+                    <div class="heng"></div>
+                    <h5>01   路过小区里公园的花坛时，她往往会在原地停留了片刻，像是在等候什么一样。等候之余，她会四</h5>
+                    <h5>处看看，趁没人注意的时候，她还会蹲下来，“喵喵喵”的叫 </h5>
+                    <a href="#">VIEW ALL</a>
+                    <span>737次阅读  |  评论:12  |  喜欢:92</span>
+                </div>
+                <img id="left_img" src="images/9.png"/>
+            </div>
+
+            <!--2-->
+            <div id="text1">
+                <div id="left_text1">
+                    <h2>黄泉馆·倒霉鬼</h2>
+                    <sub>By / 子夜晨星</sub>
+                    <div class="heng"></div>
+                    <h5>1.   俗话说，人走运的时候，出门就能捡到钱。人倒霉的时候，喝凉水都能塞着牙缝。人的运势自然是有</h5>
+                    <h5>起有落，有高有低。 据说一个人如果运势旺，做事情就</h5>
+                    <a href="#">VIEW ALL</a>
+                    <span>737次阅读  |  评论:12  |  喜欢:92</span>
+                </div>
+                <img id="left_img1" src="images/10.jpg"/>
+            </div>
+
+            <!--3-->
+            <div id="text2">
+                <div id="left_text2">
+                    <h2>当我谈跑步时，我在谈爱情</h2>
+                    <sub>By / 阿帆哒</sub>
+                    <div class="heng"></div>
+                    <h5>我辞职的理由是回家。在北京，平均跳槽时间是一年半，在所有辞职理由中，不到百分之二十是真实</h5>
+                    <h5>的。我在这家创业公司做了两年，老板待我很好。</h5>
+                    <a href="#">VIEW ALL</a>
+                    <span>737次阅读  |  评论:12  |  喜欢:92</span>
+                </div>
+                <img id="left_img2" src="images/b963239b505140283a6cd87275ecbb8520170720.gif"/>
+            </div>
+
+            <!--TING-->
+            <div id="ting">
+                <div id="f1"></div>
+                <span>TING</span>
+            </div>
+
+            <!--包住3个图片-->
+            <div id="ting_content">
+                <!--第一个-->
+                <div class="ting_content1">
+                    <!--包住图片的div-->
+                    <div class="ting_content1_img"><img src="images/12.jpg" width="302" height="302"/></div>
+                    <div class="ting_content1_text">
+                        <p>把悲伤留给自己</p>
+                        <p>主播 / NJ文珂</p>
+                        <p>254.2 k次播放  |  评论:68  |  喜欢:1.0 k</p>
+                    </div>
+                </div>
+                <div class="ting_content1">
+                    <div class="ting_content1_img"><img src="images/13.jpg" width="302" height="302"/></div>
+                    <div class="ting_content1_text">
+                        <p>【和你在一起】</p>
+                        <p>主播 / NJ文珂</p>
+                        <p>254.2 k次播放  |  评论:68  |  喜欢:1.0 k</p>
+                    </div>
+                </div>
+                <div class="ting_content1">
+                    <div class="ting_content1_img"><img src="images/16.gif" width="302" height="302"/></div>
+                    <div class="ting_content1_text">
+                        <p>「笑容」弹唱同期版</p>
+                        <p>主播 / NJ文珂</p>
+                        <p>254.2 k次播放  |  评论:68  |  喜欢:1.0 k</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--人气-->
+            <div id="jie"><img src="images/jietu.png" height="295" width="960"/></div>
+            <div id="more_xian">
+                <div id="more">查看更多精彩内容</div>
+            </div>
+            <div id="w"><img src="images/B936F201610147A7CCB7FC0DC8C28C66.png" height="100" width="100%"/></div>
+
+        </div>
+
+    </div>
+</body>
+
+
+<script>
+
+//    图片hover
+    $("#img1_img").hover(function () {
+        $(this).css({
+            width:540,
+            height:540,
+            marginLeft:-30,
+            marginTop:-30,
+            marginRight:-30,
+            marginBottom:-30
+        });
+        $("#meng").css({display:"block"});
+    },function () {
+        $(this).css({
+            width:480,
+            height:480,
+            marginLeft:0,
+            marginTop:0,
+            marginRight:0,
+            marginBottom:0
+        });
+        $("#meng").css({display:"none"});
+    });
+    $(".img2_img").hover(function () {
+        $(this).css({
+            width:300,
+            height:300,
+            marginLeft:-30,
+            marginTop:-30,
+            marginRight:-30,
+            marginBottom:-30
+        });
+    },function () {
+        $(this).css({
+            width:240,
+            height:240,
+            marginLeft:0,
+            marginTop:0,
+            marginRight:0,
+            marginBottom:0
+        })
+    });
+
+
+document.onmousewheel = function(e){
+    var e = e || window.event;
+    console.log(e.wheelDelta);
+    if(e.wheelDelta > 0){
+        $("#title").fadeIn();
+    } else {
+        $("#title").fadeOut();
+    }
+}
+
+
+</script>
+</html>
